@@ -1,0 +1,57 @@
+<mat-list>
+  <ng-container *ngFor="let puppy of puppies">
+    <app-puppy [puppy]="puppy">
+      <ng-template let-puppy>
+        <mat-list-item>
+          <mat-icon matListIcon>adjust</mat-icon>
+          <h3 matLine> {{ puppy.name }} </h3>
+          <p matLine>
+            <span>{{ puppy.breed }}</span> |
+            <span>age: {{ puppy.age }}</span>
+          </p>
+        </mat-list-item>
+      </ng-template>
+    </app-puppy>
+  </ng-container>
+</mat-list>
+<div class="grid">
+  <div class="col-8">
+    <mat-table #table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="select">
+        <mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let puppy"> {{puppy.name}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="age">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Age </mat-header-cell>
+        <mat-cell *matCellDef="let puppy"> {{puppy.age}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="photo">
+        <mat-header-cell *matHeaderCellDef> Photo </mat-header-cell>
+        <mat-cell *matCellDef="let puppy"> {{puppy.photo}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="breed">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Breed </mat-header-cell>
+        <mat-cell *matCellDef="let puppy"> {{puppy.breed}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="priority">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Priority </mat-header-cell>
+        <mat-cell *matCellDef="let puppy"> <app-priority (changeValue)="changePriority($event, puppy)"></app-priority> </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+      <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
+    </mat-table>
+    <p></p>
+    <button mat-raised-button color="primary" (click)="delSelected()">Del Selected</button>
+    <button mat-raised-button color="primary" (click)="onSubmit()">Confirm</button>
+  </div>
+</div>

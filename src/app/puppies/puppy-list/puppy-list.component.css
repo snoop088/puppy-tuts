@@ -1,0 +1,13 @@
+.mat-column-select {
+    overflow: initial;
+}
+[class^=mat-column-] {
+  flex-grow: 1;
+}
+.mat-column-breed {
+  flex-grow: 2;
+}
+.mat-column-select {
+  flex-grow: 0;
+  padding-right: 2rem;
+}

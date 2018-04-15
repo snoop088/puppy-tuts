@@ -1,0 +1,25 @@
+.step-counter-wrapper {
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,.25);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+.step-counter-wrapper i, 
+.step-counter-wrapper span {
+    line-height: 1.33rem;
+}
+.inc, .dec {
+    display: flex;
+    color: #4CAF50;
+}
+.inc:hover, .dec:hover {
+    color: #fff;
+    background: #4CAF50;
+    cursor: pointer;
+}
+span {
+    display: flex;
+}
