@@ -9,7 +9,7 @@ import { Puppy } from '../interfaces/puppy';
 export class PuppyComponent implements OnInit {
 
   @Input() puppy: Puppy;
-  @ContentChild(TemplateRef) puppyTemplate: TemplateRef<Puppy>
+  @ContentChild(TemplateRef) puppyTemplate: TemplateRef<Puppy>;
   constructor() { }
 
   ngOnInit() {

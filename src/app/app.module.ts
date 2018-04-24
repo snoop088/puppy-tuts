@@ -10,7 +10,7 @@ import { PuppiesModule } from './puppies/puppies.module';
     AppComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'puppy-tut' }),
     PuppiesModule
   ],
   providers: [],

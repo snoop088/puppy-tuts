@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, AfterViewInit, PLATFORM_ID, Inject, Optional } from '@angular/core';
 import { Puppy } from '../interfaces/puppy';
 import { MatTableDataSource, MatSort, MatTable } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -16,7 +16,7 @@ export class PuppyListComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<Puppy>;
   columnsToDisplay = ['select', 'name', 'age', 'photo', 'breed', 'priority'];
   selection: SelectionModel<Puppy>;
-  constructor() {
+  constructor(@Optional() @Inject(PLATFORM_ID) private platformId: {}) {
   }
 
   ngOnInit() {
